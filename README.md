@@ -1,18 +1,16 @@
-## Getting Started
+## How to Use the Program
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Open the code and put the cipher text in the codeString variable.
 
-## Folder Structure
+Now run the code and the frequency of each letter in the cipher will be printed.
 
-The workspace contains two folders by default, where:
+## To replace certain letters
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Upon running the program, write your input in the form of "Letter to replace-Letter to replace with"
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+For example, to replace each instance of the letter L in 'Hello' with E, the input will be "L-E"
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Tips
 
-## Dependency Management
+write 'quit' to quit the program, or 'restart' to return cipher to original form.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
