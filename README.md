@@ -1,16 +1,9 @@
-## How to Use the Program
+## Setup
 
-Open the code and put the cipher text in the codeString variable.
+1. Navigate to where you have downloaded 'Frequency-Analysis.jar' file and open your Terminal ("Command Prompt").
+2. Type 'java -jar Frequency-Analysis.jar' (without quotes) OR open the JAR file normally. Refer to fixes if an error "A Java Exception has Occurred" pops up.
+3. Enjoy!
 
-Now run the code and the frequency of each letter in the cipher will be printed.
+## Fixes
 
-## To replace certain letters
-
-Upon running the program, write your input in the form of "Letter to replace-Letter to replace with"
-
-For example, to replace each instance of the letter L in 'Hello' with E, the input will be "L-E"
-
-## Tips
-
-write 'quit' to quit the program, or 'restart' to return cipher to original form.
-
+If an error "A Java Exception has Occurred" pops up, open the JAR file using OpenJDK Platform Binary. It seems to fix the issue.
