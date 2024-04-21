@@ -1,6 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.LayoutManager;
@@ -16,7 +17,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
@@ -37,25 +40,38 @@ public class GUI extends JFrame {
     JButton changeButton = new JButton("Encode");
     JButton clearButton = new JButton("Clear");
     public void createGUI(String title, int width, int height) {
-        assignConverterValues();
+        String code = JOptionPane.showInputDialog("Enter your Code:");
+        if(code == null){
+            System.exit(0);
+        }
+        assignConverterValues(code);
         modifiedCodeLabel.setText(code);
         frequencyJLabels = new JLabel[chart.length];
 
 
         setSize(width, height);
         setBackground(Color.WHITE);
-        setLayout(new BorderLayout(20, 15));
-        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLayout(new BorderLayout(10, 10));
+        // setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 
         mainPanel.setBackground(Color.GRAY);
         frequencyChart.setBackground(Color.LIGHT_GRAY);
 
-        add(mainPanel, BorderLayout.NORTH);
-        add(frequencyChart, BorderLayout.WEST);
+        JScrollPane mainPanelScrollPane = new JScrollPane(mainPanel);
+        JScrollPane frequencyChartScrollPane = new JScrollPane(frequencyChart);
+        JScrollPane modifiedCodePanelScrollPane = new JScrollPane(modifiedCodePanel);
+
+        mainPanelScrollPane.setPreferredSize(new Dimension(300, 60));
+        modifiedCodePanelScrollPane.setPreferredSize(new Dimension(300, 60));
+        mainPanelScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        modifiedCodePanelScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+
+        add(mainPanelScrollPane, BorderLayout.NORTH);
+        add(frequencyChartScrollPane, BorderLayout.WEST);
         frequencyChart.setLayout(new BoxLayout(frequencyChart, BoxLayout.Y_AXIS));
         add(alphabetsPanel, BorderLayout.CENTER);
-        add(modifiedCodePanel, BorderLayout.SOUTH);
+        add(modifiedCodePanelScrollPane, BorderLayout.SOUTH);
 
         
         mainPanel.add(codeLabel);
@@ -79,12 +95,6 @@ public class GUI extends JFrame {
             String newCode = converter.decodeText(letterChangeList);
             modifiedCodeLabel.setText(newCode);
             letterChangeList.clear();
-            
-            // for (JTextField jTextField : alphabetsField) {
-            //     if(jTextField != null){
-            //         jTextField.setText("");
-            //     }
-            // }
         });
         clearButton.addActionListener((ActionEvent e) -> {
             for (JTextField jTextField : alphabetsField) {
@@ -106,8 +116,9 @@ public class GUI extends JFrame {
         System.out.println(Arrays.toString(letterChangeList.toArray()));
     }
 
-    public void assignConverterValues(){
-        code = "MLD BLF PMLD GSV TZNV SLD GL KOZB RG. TVG IVZWB ULJ HRNROZI KILYOVNH RM BLFI VCZNH. XSVVIH";
+    public void assignConverterValues(String userInput){
+        code = userInput;
+        // code = "MLD BLF PMLD GSV TZNV SLD GL KOZB RG. TVG IVZWB ULJ HRNROZI KILYOVNH RM BLFI VCZNH. XSVVIH";
         String codedString = code.toLowerCase();
         char[] codedArray = codedString.toCharArray();
         converter = new Converter(codedString, codedArray);
