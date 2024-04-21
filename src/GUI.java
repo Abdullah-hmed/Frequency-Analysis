@@ -78,6 +78,13 @@ public class GUI extends JFrame {
             getChangeLetters();
             String newCode = converter.decodeText(letterChangeList);
             modifiedCodeLabel.setText(newCode);
+            letterChangeList.clear();
+            
+            // for (JTextField jTextField : alphabetsField) {
+            //     if(jTextField != null){
+            //         jTextField.setText("");
+            //     }
+            // }
         });
         clearButton.addActionListener((ActionEvent e) -> {
             for (JTextField jTextField : alphabetsField) {

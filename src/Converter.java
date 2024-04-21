@@ -97,7 +97,7 @@ public class Converter {
     public String decodeText(ArrayList<String> letterChangeList){
         
         //Assigning code to tempArray
-        char[] tempArray = codedArray.clone();
+        char[] tempArray = Arrays.copyOf(codedArray, codedArray.length);
 
         //Converting ArrayList to String Array
         String[] changeList = new String[letterChangeList.size()];
@@ -115,16 +115,18 @@ public class Converter {
                 String[] word = changeList[j].split("-", 2);
                 if(tempArray[i] == word[0].charAt(0)){ //checking if first input matches
                     tempArray[i] = word[1].charAt(0);
-                    break;
                 }
-                if(tempArray[i] == word[1].charAt(0)){ //checking if second input matches
+                else if(tempArray[i] == word[1].charAt(0)){ //checking if second input matches
                     tempArray[i] = word[0].charAt(0);
-                    break;
-                } 
+                }
             }
         }
+
+        System.out.println(Arrays.toString(codedArray));
+        System.out.println(codedString);
         String changedString = new String(tempArray);
-        return changedString;
+        System.out.println(changedString);
+        return changedString.toUpperCase();
     }
 
     public static void switchWords(String userInput, char[] codedArray){
