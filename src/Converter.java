@@ -1,8 +1,9 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 // import java.util.Scanner;
 import java.util.Set;
@@ -18,37 +19,11 @@ public class Converter {
     }
 
     public void stringConverter(String codedString, char[] codedArray){
-        Set<String> replacedLetters = new HashSet<String> ();
         for(int j=0;j<codedArray.length;j++){
             System.out.print(codedArray[j]);
         }
         System.out.println();
         System.out.println();
-        // Scanner input = new Scanner(System.in);
-        // String userInput;
-        // while(true){
-        //     userInput = input.next();
-        //     if(userInput.contains("quit")){
-        //         System.exit(0);
-        //     }
-        //     else if(userInput.contains("restart")){
-        //         System.out.println("\033[H\033[2J");
-        //         System.out.flush();
-        //         codedArray = codedString.toCharArray();
-        //         for(int j=0;j<codedArray.length;j++){
-        //             System.out.print(codedArray[j]);
-        //         }
-        //         replacedLetters.clear();
-        //         System.out.println();
-        //         frequencyCount(codedArray);
-        //     }
-        //     else{
-        //         switchWords(userInput,codedArray);
-        //         replacedLetters.add(userInput);
-        //         System.out.println("\nReplaced Letters: "+replacedLetters+"\n");
-        //     }
-            
-        // }
     }
 
     public String[] frequencyCount(char[] codedArray){
